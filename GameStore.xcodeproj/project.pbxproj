@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0E42777C26053A7500842251 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E42777B26053A7500842251 /* UIImageViewExtension.swift */; };
+		0E4277832605546300842251 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4277822605546300842251 /* GameViewController.swift */; };
 		0E98545B26028EED0045DEE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E98545A26028EED0045DEE1 /* AppDelegate.swift */; };
 		0E98545D26028EED0045DEE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E98545C26028EED0045DEE1 /* SceneDelegate.swift */; };
-		0E98545F26028EED0045DEE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E98545E26028EED0045DEE1 /* ViewController.swift */; };
 		0E98546426028EEE0045DEE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E98546326028EEE0045DEE1 /* Assets.xcassets */; };
 		0E98546726028EEE0045DEE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E98546526028EEE0045DEE1 /* LaunchScreen.storyboard */; };
 		0E98547226028EEE0045DEE1 /* GameStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E98547126028EEE0045DEE1 /* GameStoreTests.swift */; };
@@ -45,10 +45,10 @@
 /* Begin PBXFileReference section */
 		0BF6D38BFA0F8AF8887B1BB0 /* Pods-GameStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameStore.debug.xcconfig"; path = "Target Support Files/Pods-GameStore/Pods-GameStore.debug.xcconfig"; sourceTree = "<group>"; };
 		0E42777B26053A7500842251 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		0E4277822605546300842251 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		0E98545726028EED0045DEE1 /* GameStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E98545A26028EED0045DEE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E98545C26028EED0045DEE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0E98545E26028EED0045DEE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0E98546326028EEE0045DEE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E98546626028EEE0045DEE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E98546826028EEE0045DEE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,6 +101,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E4277802605542F00842251 /* GamesPage */ = {
+			isa = PBXGroup;
+			children = (
+				0E9854A4260295020045DEE1 /* GameCell.swift */,
+				0E9854A9260295120045DEE1 /* GameView.swift */,
+				0E4277822605546300842251 /* GameViewController.swift */,
+			);
+			path = GamesPage;
+			sourceTree = "<group>";
+		};
+		0E4277812605543900842251 /* FavoritePage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FavoritePage;
+			sourceTree = "<group>";
+		};
 		0E98544E26028EED0045DEE1 = {
 			isa = PBXGroup;
 			children = (
@@ -126,16 +143,15 @@
 		0E98545926028EED0045DEE1 /* GameStore */ = {
 			isa = PBXGroup;
 			children = (
+				0E4277812605543900842251 /* FavoritePage */,
+				0E4277802605542F00842251 /* GamesPage */,
 				0E985496260294880045DEE1 /* Extensions */,
 				0E98545A26028EED0045DEE1 /* AppDelegate.swift */,
+				0EDA94362603DDE900336264 /* GamesModel.swift */,
 				0E98545C26028EED0045DEE1 /* SceneDelegate.swift */,
-				0E98545E26028EED0045DEE1 /* ViewController.swift */,
 				0E98546326028EEE0045DEE1 /* Assets.xcassets */,
 				0E98546526028EEE0045DEE1 /* LaunchScreen.storyboard */,
 				0E98546826028EEE0045DEE1 /* Info.plist */,
-				0E9854A4260295020045DEE1 /* GameCell.swift */,
-				0E9854A9260295120045DEE1 /* GameView.swift */,
-				0EDA94362603DDE900336264 /* GamesModel.swift */,
 			);
 			path = GameStore;
 			sourceTree = "<group>";
@@ -428,9 +444,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E4277832605546300842251 /* GameViewController.swift in Sources */,
 				0E9854A0260294AF0045DEE1 /* UIViewExtension.swift in Sources */,
 				0EDA94372603DDE900336264 /* GamesModel.swift in Sources */,
-				0E98545F26028EED0045DEE1 /* ViewController.swift in Sources */,
 				0E98545B26028EED0045DEE1 /* AppDelegate.swift in Sources */,
 				0E98545D26028EED0045DEE1 /* SceneDelegate.swift in Sources */,
 				0E42777C26053A7500842251 /* UIImageViewExtension.swift in Sources */,

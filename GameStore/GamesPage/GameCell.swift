@@ -27,7 +27,7 @@ class GameCell: UICollectionViewCell {
         label.text = "ert"
         label.textColor = .black
         label.textAlignment = .left
-        label.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30)
+        label.font = UIFont(name: "HelveticaNeue", size: 10)
         return label
     }()
     
@@ -36,7 +36,7 @@ class GameCell: UICollectionViewCell {
         label.text = "ert"
         label.textColor = .black
         label.textAlignment = .left
-        label.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30)
+        label.font = UIFont(name: "HelveticaNeue", size: 10)
         return label
     }()
     
@@ -45,7 +45,7 @@ class GameCell: UICollectionViewCell {
         label.text = "ert"
         label.textColor = .black
         label.textAlignment = .left
-        label.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30)
+        label.font = UIFont(name: "HelveticaNeue", size: 10)
         return label
     }()
     
@@ -106,17 +106,17 @@ extension GameCell {
     
     private func setupTitleLable() {
         contentView.addSubview(gameTitleLabel)
-        _ = gameTitleLabel.anchor(self.topAnchor, left: gameImageView.rightAnchor, bottom: nil, right: self.rightAnchor, topConstant: 20, leftConstant: 20, bottomConstant: 0, rightConstant: 10, widthConstant: 0, heightConstant: 10)
+        _ = gameTitleLabel.anchor(self.topAnchor, left: gameImageView.rightAnchor, bottom: nil, right: self.rightAnchor, topConstant: 40, leftConstant: 20, bottomConstant: 0, rightConstant: 10, widthConstant: 0, heightConstant: 0)
     }
     
     private func setupGenreLabel() {
-        contentView.addSubview(gameTitleLabel)
-        _ = gameTitleLabel.anchor(nil, left: gameImageView.rightAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 20, bottomConstant: 20, rightConstant: 10, widthConstant: 0, heightConstant: 20)
+        contentView.addSubview(genreLabel)
+        _ = genreLabel.anchor(nil, left: gameImageView.rightAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 20, bottomConstant: 20, rightConstant: 10, widthConstant: 0, heightConstant: 0)
     }
     
     private func setupMetacriticLabel() {
-        contentView.addSubview(gameTitleLabel)
-        _ = gameTitleLabel.anchor(nil, left: gameImageView.rightAnchor, bottom: gameTitleLabel.topAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 20, bottomConstant: 10, rightConstant: 10, widthConstant: 0, heightConstant: 20)
+        contentView.addSubview(metacriticLabel)
+        _ = metacriticLabel.anchor(nil, left: gameImageView.rightAnchor, bottom: genreLabel.topAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 20, bottomConstant: 10, rightConstant: 10, widthConstant: 0, heightConstant: 0)
     }
     
 }

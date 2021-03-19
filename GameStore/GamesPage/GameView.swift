@@ -18,6 +18,34 @@ class GameView: UIView {
             }
         }
     }
+    
+    lazy var gameSymbolView: UIImageView = {
+        let myImageView = UIImageView()
+        //myImageView.clipsToBounds = true
+        //myImageView.contentMode = .scaleAspectFit
+        //myImageView.layer.masksToBounds = true
+        myImageView.backgroundColor = .clear
+        return myImageView
+        
+    }()
+    
+    lazy var favoriteSymbolView: UIImageView = {
+        let myImageView = UIImageView()
+        //myImageView.clipsToBounds = true
+        //myImageView.contentMode = .scaleAspectFit
+        //myImageView.layer.masksToBounds = true
+        myImageView.backgroundColor = .clear
+        return myImageView
+        
+    }()
+    
+    lazy var bottomMenuStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        return stackView
+        
+    }()
 
     
     public init() {
@@ -100,4 +128,18 @@ extension GameView: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
     
    
+}
+
+extension GameView {
+    
+    func setupUI() {
+        setupBottomMenu()
+    }
+    
+    private func setupBottomMenu() {
+//        self.view.addSubview(profileImageView)
+//
+//        _ = profileImageView.anchor(gameView.bottomAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+                        
+    }
 }
