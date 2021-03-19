@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class ViewController: UIViewController {
+    
     
     lazy var profileImageView: UIImageView = {
         let pp = UIImageView()
@@ -36,7 +38,10 @@ class ViewController: UIViewController {
         
         _ = profileImageView.anchor(gameView.bottomAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
+        profileImageView.downloaded(from: "https://media.rawg.io/media/games/476/476178ef18ab0534771d099f51cdc694.jpg")
+                
     }
+    
     
     
 }

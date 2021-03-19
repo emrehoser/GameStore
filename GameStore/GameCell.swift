@@ -14,20 +14,45 @@ class GameCell: UICollectionViewCell {
     
     lazy var gameImageView: UIImageView = {
         let myImageView = UIImageView()
-        myImageView.clipsToBounds = true
-        myImageView.contentMode = .scaleAspectFill
-        myImageView.layer.masksToBounds = true
-        myImageView.layer.cornerRadius = 150.0 / 2.0
-        myImageView.backgroundColor = .blue
-        myImageView.layer.borderWidth = 2
-        myImageView.layer.borderColor = CGColor.init(red: 255, green: 0, blue: 0, alpha: 0.7)
+        //myImageView.clipsToBounds = true
+        //myImageView.contentMode = .scaleAspectFit
+        //myImageView.layer.masksToBounds = true
+        myImageView.backgroundColor = .clear
         return myImageView
         
     }()
     
+    lazy var gameTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "ert"
+        label.textColor = .black
+        label.textAlignment = .left
+        label.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30)
+        return label
+    }()
+    
+    lazy var metacriticLabel: UILabel = {
+        let label = UILabel()
+        label.text = "ert"
+        label.textColor = .black
+        label.textAlignment = .left
+        label.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30)
+        return label
+    }()
+    
+    lazy var genreLabel: UILabel = {
+        let label = UILabel()
+        label.text = "ert"
+        label.textColor = .black
+        label.textAlignment = .left
+        label.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30)
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .red
+        setupUI()
+        self.backgroundColor = .white
         
     }
     
@@ -41,18 +66,19 @@ class GameCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    public func configure(with url:String) {
-//
-//        setImageWithAlamofireImage(imageView: gameImageView, urlString: url)
-//
-//    }
+    public func configure(with url:String) {
+
+        setImageWithAlamofireImage(imageView: gameImageView, urlString: url)
+
+    }
 
 
-//    func setImageWithAlamofireImage(imageView: UIImageView, urlString: String){
-//        if let imageUrl = URL(string: urlString) {
-//            imageView.af.setImage(withURL: imageUrl)
-//        }
-//    }
+    func setImageWithAlamofireImage(imageView: UIImageView, urlString: String){
+        if let imageUrl = URL(string: urlString) {
+            setupUI()
+            imageView.downloaded(from: imageUrl)
+        }
+    }
     
     
     override func prepareForReuse() {
@@ -68,10 +94,29 @@ extension GameCell {
     
     public func setupUI() {
         setupGameImage()
+        setupTitleLable()
+        setupGenreLabel()
+        setupMetacriticLabel()
     }
     
     private func setupGameImage() {
         contentView.addSubview(gameImageView)
-        _ = gameImageView.anchor(contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: nil, topConstant: 10, leftConstant: 10, bottomConstant: 10, rightConstant: 10, widthConstant: 0, heightConstant: contentView.frame.width)
+        _ = gameImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: nil, topConstant: 10, leftConstant: 10, bottomConstant: 10, rightConstant: 10, widthConstant: self.frame.height, heightConstant: 0)
     }
+    
+    private func setupTitleLable() {
+        contentView.addSubview(gameTitleLabel)
+        _ = gameTitleLabel.anchor(self.topAnchor, left: gameImageView.rightAnchor, bottom: nil, right: self.rightAnchor, topConstant: 20, leftConstant: 20, bottomConstant: 0, rightConstant: 10, widthConstant: 0, heightConstant: 10)
+    }
+    
+    private func setupGenreLabel() {
+        contentView.addSubview(gameTitleLabel)
+        _ = gameTitleLabel.anchor(nil, left: gameImageView.rightAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 20, bottomConstant: 20, rightConstant: 10, widthConstant: 0, heightConstant: 20)
+    }
+    
+    private func setupMetacriticLabel() {
+        contentView.addSubview(gameTitleLabel)
+        _ = gameTitleLabel.anchor(nil, left: gameImageView.rightAnchor, bottom: gameTitleLabel.topAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 20, bottomConstant: 10, rightConstant: 10, widthConstant: 0, heightConstant: 20)
+    }
+    
 }
