@@ -13,16 +13,17 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         UITabBar.appearance().barTintColor = .systemBackground
-        tabBar.tintColor = .label
+        tabBar.tintColor = UIColor(red: 0.063, green: 0.392, blue: 0.737, alpha: 1)
+        
+        
         setupVCs()
 
         // Do any additional setup after loading the view.
     }
     func setupVCs() {
         viewControllers = [
-            createNavController(for: GameViewController(), title: NSLocalizedString("Search", comment: ""), image: UIImage(systemName: "magnifyingglass")!),
-            createNavController(for: GameViewController(), title: NSLocalizedString("Home", comment: ""), image: UIImage(systemName: "house")!),
-            createNavController(for: GameViewController(), title: NSLocalizedString("Profile", comment: ""), image: UIImage(systemName: "person")!)
+            createNavController(for: GameViewController(), title: NSLocalizedString("Games", comment: ""), image: UIImage(systemName: "magnifyingglass")!),
+            createNavController(for: GameViewController(), title: NSLocalizedString("Favorites", comment: ""), image: UIImage(systemName: "house")!),
         ]
     }
     

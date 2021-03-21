@@ -15,7 +15,7 @@ class GameCell: UICollectionViewCell {
     lazy var gameImageView: UIImageView = {
         let myImageView = UIImageView()
         //myImageView.clipsToBounds = true
-        myImageView.contentMode = .scaleAspectFill
+        //myImageView.contentMode = .scaleAspectFill
         //myImageView.layer.masksToBounds = true
         myImageView.backgroundColor = .clear
         return myImageView
@@ -90,9 +90,9 @@ class GameCell: UICollectionViewCell {
 
     func setImageWithAlamofireImage(imageView: UIImageView, urlString: String){
         if let imageUrl = URL(string: urlString) {
-            setupUI()
             imageView.downloaded(from: imageUrl)
-            //imageView.contentMode = .scaleAspectFill
+            imageView.contentMode = .scaleAspectFill
+            imageView.clipsToBounds = true
         }
     }
     

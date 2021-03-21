@@ -120,6 +120,13 @@
 			path = FavoritePage;
 			sourceTree = "<group>";
 		};
+		0E42779226079DAE00842251 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
 		0E98544E26028EED0045DEE1 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +152,7 @@
 		0E98545926028EED0045DEE1 /* GameStore */ = {
 			isa = PBXGroup;
 			children = (
+				0E42779226079DAE00842251 /* Icons */,
 				0E4277812605543900842251 /* FavoritePage */,
 				0E4277802605542F00842251 /* GamesPage */,
 				0E985496260294880045DEE1 /* Extensions */,
