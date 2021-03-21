@@ -15,7 +15,7 @@ class GameCell: UICollectionViewCell {
     lazy var gameImageView: UIImageView = {
         let myImageView = UIImageView()
         //myImageView.clipsToBounds = true
-        //myImageView.contentMode = .scaleAspectFit
+        myImageView.contentMode = .scaleAspectFill
         //myImageView.layer.masksToBounds = true
         myImageView.backgroundColor = .clear
         return myImageView
@@ -24,28 +24,43 @@ class GameCell: UICollectionViewCell {
     
     lazy var gameTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "ert"
-        label.textColor = .black
-        label.textAlignment = .left
-        label.font = UIFont(name: "HelveticaNeue", size: 10)
+        label.backgroundColor = .white
+        label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        label.font = UIFont(name: "SFProDisplay-Bold", size: 20)
+        
+        var paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.05
+
+        label.attributedText = NSMutableAttributedString(string: "Grand Theft Auto V", attributes: [NSAttributedString.Key.kern: 0.38, NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        
         return label
     }()
     
     lazy var metacriticLabel: UILabel = {
         let label = UILabel()
-        label.text = "ert"
-        label.textColor = .black
-        label.textAlignment = .left
-        label.font = UIFont(name: "HelveticaNeue", size: 10)
+        label.backgroundColor = .white
+        label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        label.font = UIFont(name: "SFProDisplay-Medium", size: 14)
+
+        var paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.5
+
+        label.attributedText = NSMutableAttributedString(string: "metacritic:", attributes: [NSAttributedString.Key.kern: 0.38, NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        
         return label
     }()
     
     lazy var genreLabel: UILabel = {
         let label = UILabel()
-        label.text = "ert"
-        label.textColor = .black
-        label.textAlignment = .left
-        label.font = UIFont(name: "HelveticaNeue", size: 10)
+        label.backgroundColor = .white
+        label.textColor = UIColor(red: 0.541, green: 0.541, blue: 0.561, alpha: 1)
+        label.font = UIFont(name: "SFProText-Regular", size: 13)
+
+        var paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.16
+
+        label.attributedText = NSMutableAttributedString(string: "Action, shooter", attributes: [NSAttributedString.Key.kern: -0.08, NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        
         return label
     }()
     
@@ -77,6 +92,7 @@ class GameCell: UICollectionViewCell {
         if let imageUrl = URL(string: urlString) {
             setupUI()
             imageView.downloaded(from: imageUrl)
+            //imageView.contentMode = .scaleAspectFill
         }
     }
     
