@@ -12,6 +12,8 @@ class GameCell: UICollectionViewCell {
     
     static let identifier = "cell"
     
+    public var didSelect = false
+    
     lazy var gameImageView: UIImageView = {
         let myImageView = UIImageView()
         //myImageView.clipsToBounds = true
@@ -117,22 +119,24 @@ extension GameCell {
     
     private func setupGameImage() {
         contentView.addSubview(gameImageView)
-        _ = gameImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: nil, topConstant: 10, leftConstant: 10, bottomConstant: 10, rightConstant: 10, widthConstant: self.frame.height, heightConstant: 0)
+        _ = gameImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: nil, topConstant: 16, leftConstant: 16, bottomConstant: 16, rightConstant: 16, widthConstant: self.frame.height, heightConstant: 0)
     }
     
     private func setupTitleLable() {
         contentView.addSubview(gameTitleLabel)
-        _ = gameTitleLabel.anchor(self.topAnchor, left: gameImageView.rightAnchor, bottom: nil, right: self.rightAnchor, topConstant: 40, leftConstant: 20, bottomConstant: 0, rightConstant: 10, widthConstant: 0, heightConstant: 0)
-    }
-    
-    private func setupGenreLabel() {
-        contentView.addSubview(genreLabel)
-        _ = genreLabel.anchor(nil, left: gameImageView.rightAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 20, bottomConstant: 20, rightConstant: 10, widthConstant: 0, heightConstant: 0)
+        _ = gameTitleLabel.anchor(self.topAnchor, left: gameImageView.rightAnchor, bottom: nil, right: self.rightAnchor, topConstant: 16, leftConstant: 16, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 0)
     }
     
     private func setupMetacriticLabel() {
         contentView.addSubview(metacriticLabel)
-        _ = metacriticLabel.anchor(nil, left: gameImageView.rightAnchor, bottom: genreLabel.topAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 20, bottomConstant: 10, rightConstant: 10, widthConstant: 0, heightConstant: 0)
+        _ = metacriticLabel.anchor(nil, left: gameImageView.rightAnchor, bottom: genreLabel.topAnchor, right: nil, topConstant: 0, leftConstant: 16, bottomConstant: 8, rightConstant: 0, widthConstant: 0, heightConstant: 0)
     }
+    
+    private func setupGenreLabel() {
+        contentView.addSubview(genreLabel)
+        _ = genreLabel.anchor(nil, left: gameImageView.rightAnchor, bottom: self.bottomAnchor, right: nil, topConstant: 0, leftConstant: 16, bottomConstant: 12, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+    }
+    
+    
     
 }

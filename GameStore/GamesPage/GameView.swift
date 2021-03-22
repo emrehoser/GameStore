@@ -24,6 +24,7 @@ class GameView: UIView {
         //myImageView.clipsToBounds = true
         //myImageView.contentMode = .scaleAspectFit
         //myImageView.layer.masksToBounds = true
+        myImageView.downloaded(from: "GameTab")
         myImageView.backgroundColor = .clear
         return myImageView
         
@@ -70,7 +71,7 @@ class GameView: UIView {
         gamesCollectionView?.showsHorizontalScrollIndicator = false
         gamesCollectionView?.delegate = self
         gamesCollectionView.dataSource = self
-        gamesCollectionView?.backgroundColor = .brown
+        gamesCollectionView?.backgroundColor = .clear
         gamesCollectionView?.register(GameCell.self, forCellWithReuseIdentifier: GameCell.identifier)
         
         
