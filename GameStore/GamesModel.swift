@@ -45,16 +45,16 @@ class Game: Mappable {
     
 }
 
-class Genre: Mappable {
+public class Genre: NSObject, Mappable {
     
     var name: String?
 
-    func mapping(map: Map) {
+    public func mapping(map: Map) {
         name     <- map["name"]
         
     }
 
-    required init(map: Map) {
+    required public init(map: Map) {
         
     }
 }

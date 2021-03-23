@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FavoriteItem" representedClassName="FavoriteItem" syncable="YES">
+        <attribute name="genres" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[Genre]"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="imageurl" optional="YES" attributeType="String"/>
+        <attribute name="metacritic" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="FavoriteItem" positionX="-9" positionY="36" width="128" height="118"/>
+    </elements>
+</model>

@@ -21,7 +21,7 @@ class GameCell: UICollectionViewCell {
         //myImageView.layer.masksToBounds = true
         myImageView.backgroundColor = .clear
         return myImageView
-        
+         
     }()
     
     lazy var gameTitleLabel: UILabel = {
