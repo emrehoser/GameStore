@@ -112,7 +112,7 @@ extension GameView: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GameCell.identifier, for: indexPath) as! GameCell
-        cell.configure(with: (gamesModel?.games[indexPath.row].backgroundImage)!)
+        cell.configure(with: (gamesModel?.games[indexPath.row])!)
         return cell
     }
     
