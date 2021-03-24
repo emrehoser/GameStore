@@ -24,6 +24,9 @@
 		0EE35AAA260AA9710013C4CC /* FavoriteItem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0EE35AA8260AA9710013C4CC /* FavoriteItem.xcdatamodeld */; };
 		0EE35AB0260AAA400013C4CC /* FavoriteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE35AAE260AAA400013C4CC /* FavoriteItem+CoreDataClass.swift */; };
 		0EE35AB1260AAA400013C4CC /* FavoriteItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE35AAF260AAA400013C4CC /* FavoriteItem+CoreDataProperties.swift */; };
+		0EE35AB6260AB04C0013C4CC /* FavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE35AB5260AB04C0013C4CC /* FavViewController.swift */; };
+		0EE35ABB260AB0A60013C4CC /* FavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE35ABA260AB0A60013C4CC /* FavView.swift */; };
+		0EE35AC0260AB8190013C4CC /* FavCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE35ABF260AB8190013C4CC /* FavCell.swift */; };
 		41C0B4905BECFA747BCBA2DB /* Pods_GameStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC80B60D31F07C238524C18 /* Pods_GameStore.framework */; };
 		792CB7492ED1E0F5A60383BF /* Pods_GameStore_GameStoreUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B04A6B400379A5E5F2C7FA5 /* Pods_GameStore_GameStoreUITests.framework */; };
 		F8E163F34137EB9A4A2C4132 /* Pods_GameStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA974CB6137DE12035781DDB /* Pods_GameStoreTests.framework */; };
@@ -71,6 +74,9 @@
 		0EE35AA9260AA9710013C4CC /* FavoriteItem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteItem.xcdatamodel; sourceTree = "<group>"; };
 		0EE35AAE260AAA400013C4CC /* FavoriteItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		0EE35AAF260AAA400013C4CC /* FavoriteItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteItem+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		0EE35AB5260AB04C0013C4CC /* FavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavViewController.swift; sourceTree = "<group>"; };
+		0EE35ABA260AB0A60013C4CC /* FavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavView.swift; sourceTree = "<group>"; };
+		0EE35ABF260AB8190013C4CC /* FavCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavCell.swift; sourceTree = "<group>"; };
 		3FC80B60D31F07C238524C18 /* Pods_GameStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F0453D7DD54766C44910FB /* Pods-GameStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameStore.release.xcconfig"; path = "Target Support Files/Pods-GameStore/Pods-GameStore.release.xcconfig"; sourceTree = "<group>"; };
 		58817B0CE41D2D0C944F900F /* Pods-GameStore-GameStoreUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameStore-GameStoreUITests.debug.xcconfig"; path = "Target Support Files/Pods-GameStore-GameStoreUITests/Pods-GameStore-GameStoreUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +128,9 @@
 		0E4277812605543900842251 /* FavoritePage */ = {
 			isa = PBXGroup;
 			children = (
+				0EE35AB5260AB04C0013C4CC /* FavViewController.swift */,
+				0EE35ABA260AB0A60013C4CC /* FavView.swift */,
+				0EE35ABF260AB8190013C4CC /* FavCell.swift */,
 			);
 			path = FavoritePage;
 			sourceTree = "<group>";
@@ -466,9 +475,12 @@
 			files = (
 				0EE35AB0260AAA400013C4CC /* FavoriteItem+CoreDataClass.swift in Sources */,
 				0E4277832605546300842251 /* GameViewController.swift in Sources */,
+				0EE35AB6260AB04C0013C4CC /* FavViewController.swift in Sources */,
 				0EE35AAA260AA9710013C4CC /* FavoriteItem.xcdatamodeld in Sources */,
 				0E9854A0260294AF0045DEE1 /* UIViewExtension.swift in Sources */,
+				0EE35AC0260AB8190013C4CC /* FavCell.swift in Sources */,
 				0EDA94372603DDE900336264 /* GamesModel.swift in Sources */,
+				0EE35ABB260AB0A60013C4CC /* FavView.swift in Sources */,
 				0E98545B26028EED0045DEE1 /* AppDelegate.swift in Sources */,
 				0E98545D26028EED0045DEE1 /* SceneDelegate.swift in Sources */,
 				0E42777C26053A7500842251 /* UIImageViewExtension.swift in Sources */,

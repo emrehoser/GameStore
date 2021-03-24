@@ -10,8 +10,10 @@ import UIKit
 import ObjectMapper
 import CoreData
 
-
-class GameView: UIView {
+class FavView: UIView {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     private var gamesCollectionView: UICollectionView!
     var gamesModel: GamesModel?{
         didSet {
@@ -21,17 +23,16 @@ class GameView: UIView {
         }
     }
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    private var items = [FavoriteItem]()
     
     public init() {
         super.init(frame: .zero)
-        getGames()
+        getFavorite()
         print("ert")
         setupCollectionView()
     }
     
-    
+     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -47,7 +48,7 @@ class GameView: UIView {
         gamesCollectionView?.delegate = self
         gamesCollectionView.dataSource = self
         gamesCollectionView?.backgroundColor = .clear
-        gamesCollectionView?.register(GameCell.self, forCellWithReuseIdentifier: GameCell.identifier)
+        gamesCollectionView?.register(FavCell.self, forCellWithReuseIdentifier: FavCell.identifier)
         
         
         self.addSubview(gamesCollectionView)
@@ -55,61 +56,37 @@ class GameView: UIView {
         
     }
     
-    func getGames() {
-        
-        let url = URL(string: "https://api.rawg.io/api/games?page_size=10&page=1")!
-
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-            guard let data = data else { return }
-            self.gamesModel = Mapper<GamesModel>().map(JSONString: String(data: data, encoding: .utf8)!)
-            print("ert")
-            //print(String(data: data, encoding: .utf8)!)
+    func getFavorite(){
+        do {
+            items = try context.fetch(FavoriteItem.fetchRequest())
+            DispatchQueue.main.async {
+                self.gamesCollectionView.reloadData()
+            }
         }
-
-        task.resume()
-            
+        catch {
+            // error
+        }
+        
     }
     
-    func  createFavorite(game: Game){
-        let newItem = FavoriteItem(context: context)
-
-        newItem.genres = game.genres
-        newItem.id = String(game.gameId!)
-        newItem.metacritic = String(game.metacritic!)
-        newItem.name = game.gameName
-        newItem.imageurl = game.backgroundImage
-
-
-        do {
-            try context.save()
-        } catch {
-
-        }
-    }
-
 }
 
 
-extension GameView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+extension FavView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("bura girdim")
-        if gamesModel == nil {
-           // Do something using `xyz`.
-            return 0
-        }
-        
-        return (gamesModel?.games.count)!
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GameCell.identifier, for: indexPath) as! GameCell
-        cell.configure(with: (gamesModel?.games[indexPath.row])!)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavCell.identifier, for: indexPath) as! FavCell
+        cell.configure(with: (items[indexPath.row]))
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        createFavorite(game: (gamesModel?.games[indexPath.row])!)
+        print("did select")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -123,7 +100,7 @@ extension GameView: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
    
 }
 
-extension GameView {
+extension FavView {
     
     func setupUI() {
         setupBottomMenu()

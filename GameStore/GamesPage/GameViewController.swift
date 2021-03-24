@@ -8,7 +8,8 @@
 import Foundation
 import UIKit
 
-class GameViewController: UIViewController {
+
+class GameViewController: UIViewController, UITabBarControllerDelegate {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -27,14 +28,10 @@ class GameViewController: UIViewController {
         
     }
     
-    func getFavorite(){
-        do {
-            let items = try context.fetch(FavoriteItem.fetchRequest())
-        }
-        catch {
-            // error
-        }
-        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.tabBarController?.delegate = self
     }
     
     func  createFavorite(game: Game){
