@@ -10,8 +10,14 @@ import UIKit
 import ObjectMapper
 import CoreData
 
+protocol GameViewDelegate: class {
+    func cellClicked(gameId: Int)
+}
 
 class GameView: UIView {
+    
+    weak var gameDelegate: GameViewDelegate?
+    
     private var gamesCollectionView: UICollectionView!
     var gamesModel: GamesModel?{
         didSet {
@@ -27,7 +33,6 @@ class GameView: UIView {
     public init() {
         super.init(frame: .zero)
         getGames()
-        print("ert")
         setupCollectionView()
     }
     
@@ -62,29 +67,11 @@ class GameView: UIView {
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
             self.gamesModel = Mapper<GamesModel>().map(JSONString: String(data: data, encoding: .utf8)!)
-            print("ert")
             //print(String(data: data, encoding: .utf8)!)
         }
 
         task.resume()
             
-    }
-    
-    func  createFavorite(game: Game){
-        let newItem = FavoriteItem(context: context)
-
-        newItem.genres = game.genres
-        newItem.id = String(game.gameId!)
-        newItem.metacritic = String(game.metacritic!)
-        newItem.name = game.gameName
-        newItem.imageurl = game.backgroundImage
-
-
-        do {
-            try context.save()
-        } catch {
-
-        }
     }
 
 }
@@ -93,7 +80,6 @@ class GameView: UIView {
 extension GameView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("bura girdim")
         if gamesModel == nil {
            // Do something using `xyz`.
             return 0
@@ -118,7 +104,8 @@ extension GameView: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         (selectedCell as! GameCell).metacriticLabel.backgroundColor = selectedBackground
         (selectedCell as! GameCell).metacriticNumLabel.backgroundColor = selectedBackground
         
-        createFavorite(game: (gamesModel?.games[indexPath.row])!)
+        gameDelegate?.cellClicked(gameId: (gamesModel?.games[indexPath.row].gameId)!)
+        // createFavorite(game: (gamesModel?.games[indexPath.row])!)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

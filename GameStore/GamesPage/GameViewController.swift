@@ -7,11 +7,12 @@
 
 import Foundation
 import UIKit
+import ObjectMapper
 
 
 class GameViewController: UIViewController, UITabBarControllerDelegate {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     
     lazy var gameView: GameView = {
         let view = GameView()
@@ -22,8 +23,10 @@ class GameViewController: UIViewController, UITabBarControllerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .clear
+        self.gameView.gameDelegate = self
         self.view.addSubview(gameView)
         _ = gameView.anchor(self.view.topAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 80, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        
         
         
     }
@@ -35,31 +38,16 @@ class GameViewController: UIViewController, UITabBarControllerDelegate {
         self.tabBarController?.delegate = self
     }
     
-    func  createFavorite(game: Game){
-        let newItem = FavoriteItem(context: context)
-        
-        newItem.genres = game.genres
-        newItem.id = String(game.gameId!)
-        newItem.metacritic = String(game.metacritic!)
-        newItem.name = game.gameName
-        newItem.imageurl = game.backgroundImage
-        
-        
-        do {
-            try context.save()
-        } catch {
-                
-        }
-    }
     
-    func deleteFavorite(item: FavoriteItem){
-        context.delete(item)
-        
-        do {
-            try context.save()
-        } catch  {
-            
-        }
+}
+
+extension GameViewController: GameViewDelegate {
+    
+    func cellClicked(gameId: Int) {
+        let vc = DetailViewController()
+        vc.gameId = gameId
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
 }

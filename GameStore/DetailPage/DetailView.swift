@@ -14,6 +14,8 @@ import CoreData
 class DetailView: UIView {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var gameModel: GameDetailModel?
 
     lazy var backButton: UIButton = {
         let myBackButton = UIButton()
@@ -26,6 +28,7 @@ class DetailView: UIView {
         let myBackButton = UIButton()
         myBackButton.backgroundColor = .clear
         myBackButton.setTitle("Games", for: .normal)
+        myBackButton.setTitleColor(UIColor(red: 0, green: 0.478, blue: 1, alpha: 1), for: .normal)
         return myBackButton
     }()
     
@@ -33,13 +36,14 @@ class DetailView: UIView {
         let myFavButton = UIButton()
         myFavButton.backgroundColor = .clear
         myFavButton.setTitle("Favorite", for: .normal)
+        myFavButton.setTitleColor(UIColor(red: 0, green: 0.478, blue: 1, alpha: 1), for: .normal)
         return myFavButton
     }()
     
     lazy var gameImageView: UIImageView = {
         let myImageView = UIImageView()
         //myImageView.clipsToBounds = true
-        //myImageView.contentMode = .scaleAspectFill
+        myImageView.contentMode = .scaleToFill
         //myImageView.layer.masksToBounds = true
         myImageView.backgroundColor = .clear
         return myImageView
@@ -102,8 +106,10 @@ class DetailView: UIView {
     }()
     
     
-    public init() {
+    public init(gameId: Int) {
         super.init(frame: .zero)
+        self.detailConfigure(with: self.gameModel!)
+        getGameInfo(gameId: gameId)
         setupUI()
         self.backgroundColor = .white
     }
@@ -115,6 +121,46 @@ class DetailView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func detailConfigure(with game: GameDetailModel) {
+
+        setImageWithAlamofireImage(imageView: gameImageView, urlString: game.backgroundImage!)
+        setTitle(title: game.gameName!)
+        setDescription(description: game.description!)
+        
+        
+    }
+    
+    func setTitle(title: String) {
+        gameTitleLabel.text = title
+    }
+    
+    func setDescription(description: String){
+        gameDescriptionLabel.text = description
+    }
+    
+    
+
+    func setImageWithAlamofireImage(imageView: UIImageView, urlString: String){
+        if let imageUrl = URL(string: urlString) {
+            imageView.downloaded(from: imageUrl)
+            imageView.clipsToBounds = true
+        }
+    }
+    
+    func getGameInfo(gameId: Int) {
+        
+        let url = URL(string: "https://api.rawg.io/api/games/"+"\(gameId)")!
+
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard let data = data else { return }
+            self.gameModel = Mapper<GameDetailModel>().map(JSONString: String(data: data, encoding: .utf8)!)
+            
+        }
+        
+        task.resume()
+            
     }
     
     
@@ -134,6 +180,8 @@ class DetailView: UIView {
 
         }
     }
+    
+    
     
 
 }
@@ -165,17 +213,17 @@ extension DetailView {
     
     private func setupBackButtonText() {
         self.addSubview(backButtonText)
-        _ = backButtonText.anchor(self.topAnchor, left: backButton.rightAnchor, bottom: nil, right: nil, topConstant: 55.5, leftConstant: 5.5, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        _ = backButtonText.anchor(self.topAnchor, left: backButton.rightAnchor, bottom: backButton.bottomAnchor, right: nil, topConstant: 55.5, leftConstant: 5.5, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
     }
     
     private func setupFavButton() {
         self.addSubview(favButton)
-        _ = favButton.anchor(self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 55.5, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        _ = favButton.anchor(self.topAnchor, left: nil, bottom: backButton.bottomAnchor, right: self.rightAnchor, topConstant: 55.5, leftConstant: 0, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 0)
     }
     
     private func setupGameImage() {
         self.addSubview(gameImageView)
-        _ = gameDescriptionLabel.anchor(backButton.bottomAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: self.frame.height / 2.8)
+        _ = gameImageView.anchor(backButton.bottomAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: self.frame.height / 2.8)
     }
     
     private func setupGameDescriptionLabel() {

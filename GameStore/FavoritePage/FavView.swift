@@ -69,6 +69,16 @@ class FavView: UIView {
         
     }
     
+    func deleteFavorite(item: FavoriteItem){
+        context.delete(item)
+        
+        do {
+            try context.save()
+        } catch  {
+            
+        }
+    }
+    
 }
 
 
