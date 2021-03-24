@@ -85,7 +85,6 @@ class GameCell: UICollectionViewCell {
         super.init(frame: frame)
         setupUI()
         self.backgroundColor = .white
-        
     }
     
     override func layoutSubviews() {

@@ -109,6 +109,15 @@ extension GameView: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedCell:UICollectionViewCell = collectionView.cellForItem(at: indexPath)!
+        let selectedBackground = UIColor(red: 0.879, green: 0.879, blue: 0.879, alpha: 1)
+        selectedCell.backgroundColor = selectedBackground
+        (selectedCell as! GameCell).gameTitleLabel.backgroundColor = selectedBackground
+        (selectedCell as! GameCell).genreLabel.backgroundColor = selectedBackground
+        (selectedCell as! GameCell).metacriticLabel.backgroundColor = selectedBackground
+        (selectedCell as! GameCell).metacriticNumLabel.backgroundColor = selectedBackground
+        
         createFavorite(game: (gamesModel?.games[indexPath.row])!)
     }
     
